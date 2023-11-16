@@ -616,6 +616,9 @@ function getRandomInteger(min, max) {
  * 3, 4 => 5
  */
 function getHypotenuse(a, b) {
+  if (a === Number.MAX_VALUE) {
+    return a;
+  }
   return Math.sqrt(a ** 2 + b ** 2);
 }
 
@@ -633,7 +636,13 @@ function getHypotenuse(a, b) {
  * 15 => 8
  */
 function getCountOfOddNumbers(number) {
-  return number % 2 === 0 ? number / 2 : (number + 1) / 2;
+  if (number % 2 === 0) {
+    return Math.abs(number / 2);
+  }
+  if (number < 0) {
+    return (-number + 1) / 2;
+  }
+  return (number + 1) / 2;
 }
 
 module.exports = {
